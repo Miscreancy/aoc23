@@ -10,7 +10,7 @@ def parse_args():
             description="Solver for Advent pf Code 2023 Day 2",
             )
     parser.add_argument('-f','--filename',dest="filename",required=True,help="filename of the input file for day 2")
-    parser.add_argument('-p','--puzzle',dest="puzzle",choices=["d1","d2"],required=True,help="Which day's puzzle to solve")
+    parser.add_argument('-p','--puzzle',dest="puzzle",choices=["d1","d2","d3"],required=True,help="Which day's puzzle to solve")
     parser.add_argument('-n','--number',dest="number",choices=[1,2],required=True,help="Which of the selected day's puzzles to solve: 1 or 2",type=int)
     args = parser.parse_args()
     return args
@@ -18,7 +18,8 @@ def parse_args():
 def call_function(puzzle,filename,number):
     puzzle_dict = {
         "d1": d1,
-        "d2": d2
+        "d2": d2,
+        "d3": d3
         }
     puzzle_dict[puzzle](filename,number)
 
