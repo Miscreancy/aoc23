@@ -1,5 +1,4 @@
 import re
-import time
 
 '''
 I've refactored my bash code but left my original python implementation; the original bash was similar.
