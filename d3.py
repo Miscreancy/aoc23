@@ -1,3 +1,4 @@
+import common
 import re
 
 '''
@@ -8,17 +9,15 @@ Messy as heck, done in 90 minutes at 5am while half asleep, but I own my own qui
 
 def d3(filename,puzzle):
     if puzzle == 1:
-        puzzle_1(filename)
+        puzzle_1(filename,puzzle)
     else:
-        puzzle_2(filename)
+        puzzle_2(filename,puzzle)
 
 
-def puzzle_1(filename):
-    inputfile =  open(filename, "r")
-
+def puzzle_1(filename,puzzle):
     final_array=[]
     discount_array=[]
-    lines = inputfile.read().splitlines()
+    lines = common.read_lines(filename)
     maxheight=len(lines)-1
     maxwidth = len(lines[0])-1
     for index,line in enumerate(lines):
@@ -66,21 +65,17 @@ def puzzle_1(filename):
                             forwi=maxwidth+1
 
                     digit = ''.join(digit_array)
-                    print(digit)
                     final_array.append(int(digit))
-
-    inputfile.close()
 
     total = 0
     for i in final_array:
          total = total+i
-    print(total)
+    print("Puzzle %s: %s" %(puzzle,total))
 
-def puzzle_2(filename):
-    inputfile =  open(filename, "r")
+def puzzle_2(filename,puzzle):
     final_array=[]
     discount_array=[]
-    lines = inputfile.read().splitlines()
+    lines = common.read_lines(filename)
     maxheight=len(lines)-1
     for index,line in enumerate(lines):
         for idx,item in enumerate(line):
@@ -109,7 +104,6 @@ def puzzle_2(filename):
                             while backi >= 0:
                                 if lines[v][backi].isdigit():
                                     back_array.append(lines[v][backi])
-                                    discount_array.append()
                                     backi=backi-1
                                 else:
                                     backi=-1
@@ -133,14 +127,11 @@ def puzzle_2(filename):
                 dedup_part_array=list(set(part_array))
                 if len(dedup_part_array) == 2:
                     ratio=int(dedup_part_array[0])*int(dedup_part_array[1])
-                    print("Part array matched")
-                    print(part_array)
-                    print(ratio)
                     final_array.append(ratio)
     total = 0
     for i in final_array:
          total = total+i
-    print(total)
+    print("Puzzle %s: %s" %(puzzle,total))
 
 def define_search_area(index,max):
     if not index == 0 and not index == max:

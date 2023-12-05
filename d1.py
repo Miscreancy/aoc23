@@ -1,8 +1,7 @@
+import common
 import re
 
 def d1(filename,puzzle):
-    inputfile = open(filename, "r")
-
     final_array=[]
     subs = [
         ('one','o1e'),
@@ -16,7 +15,7 @@ def d1(filename,puzzle):
         ('nine','n9e')
     ]
 
-    lines = inputfile.readlines()
+    lines = common.read_lines(filename)
     for line in lines:
         if puzzle == 2:
             for a, b in subs:
@@ -25,10 +24,9 @@ def d1(filename,puzzle):
         number_string = number_array[0]+number_array[-1]
         final_array.append(int(number_string))
 
-    inputfile.close()
 
     total = 0
     for i in final_array:
         total = total+i
 
-    print(total)
+    print("Puzzle %s: %s" %(puzzle,total))

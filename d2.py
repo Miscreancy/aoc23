@@ -1,6 +1,6 @@
-def d2(filename,puzzle):
-    inputfile = open(filename, "r")
+import common
 
+def d2(filename,puzzle):
     final_array=[]
 
     limit_dict = {
@@ -9,7 +9,7 @@ def d2(filename,puzzle):
             "green": 13
             }
 
-    lines = inputfile.readlines()
+    lines = common.read_lines(filename)
     for line in lines:
         game_pass = True
         value_dict = {
@@ -38,9 +38,7 @@ def d2(filename,puzzle):
             power = int(value_dict["red"] * value_dict["blue"] * value_dict["green"])
             final_array.append(power)
 
-    inputfile.close()
-
     total = 0
     for i in final_array:
         total = total+i
-    print(total)
+    print("Puzzle %s: %s" %(puzzle,total))

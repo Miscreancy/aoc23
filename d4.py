@@ -1,9 +1,8 @@
+import common
 import re
 
 def d4(filename,puzzle):
-    inputfile = open(filename, 'r')
-    lines = inputfile.read().splitlines()
-    inputfile.close()
+    lines = common.read_lines(filename)
 
     points = 0
     indexRepeats = {}
